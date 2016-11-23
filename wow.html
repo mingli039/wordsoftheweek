@@ -1,0 +1,506 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Words of the Week</title>
+        <link rel="icon" type="image/png" href="logo.png" sizes="32x32"/>
+    		<link rel="shortcut icon" type="image/x-icon" href="logo.ico"/>
+        <style>
+          body {
+            text-align: center;
+          }
+          .q_container {
+            margin: auto;
+            position: absolute;
+            top: 30%;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+            width: 55%;
+            color: #222;
+            font-size: 13pt;
+            font-family: Verdana, Arial;
+            font-weight: bold;
+            opacity: 0.95;
+          }
+          .q_div, .a_div {
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+          }
+          .q_div {
+            background-color: #f4b642;
+          }
+          .a_div {
+            background-color: #5a8ddd;
+            transition: background-color 0.5s;
+          }
+          .a_div:hover {
+            background-color: #27549e;
+            transition: background-color 0.5s;
+            cursor: pointer;
+          }
+          #title {
+            color: #333;
+            font-size: 18pt;
+            font-family: Verdana, Arial;
+            font-weight: bold;
+            position: absolute;
+            margin: auto;
+            right: 0%;
+            left: 0%;
+            bottom: 0%;
+            top: 15%;
+          }
+          #start {
+            color: #FFF;
+            font-size: 25pt;
+            font-family: Verdana, Arial;
+            font-weight: bold;
+            position: absolute;
+            margin: auto;
+            right: 0%;
+            left: 0%;
+            bottom: 0%;
+            top: -10%;
+            background-color: #2771e8;
+            border-radius: 5px;
+            padding: 20px;
+            width: 25%;
+            height: 50px;
+            line-height: 50px;
+          }
+          #start:hover {
+            cursor: pointer;
+          }
+          #result_container {
+            color: #333;
+            font-size: 18pt;
+            font-family: Verdana, Arial;
+            font-weight: bold;
+            text-align: left;
+            background-color: #FAFAFA;
+            padding: 10px;
+          }
+          #end_container {
+            width: 30%;
+            position: absolute;
+            margin: auto;
+            right: 0%;
+            left: 0%;
+            bottom: 0%;
+            top: 30%;
+            border-radius: 5px;
+          }
+        </style>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <div id="title">English Vocab</div>
+        <div id="start">Start</div>
+        <div id="end_container">
+          <div id="result_container"></div>
+        </div>
+        <script>
+        function scramble(array) {
+          var currentIndex = array.length, temporaryValue, randomIndex;
+
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
+
+          var set_0 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_0[1] === set_0[0]){set_0[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_0[2] === set_0[0] || set_0[2] === set_0[1]){set_0[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_0[3] === set_0[0] || set_0[3] === set_0[1] || set_0[3] === set_0[2]){set_0[3] = Math.round((Math.random()*4)+0.5)}
+          var set_1 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_1[1] === set_1[0]){set_1[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_1[2] === set_1[0] || set_1[2] === set_1[1]){set_1[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_1[3] === set_1[0] || set_1[3] === set_1[1] || set_1[3] === set_1[2]){set_1[3] = Math.round((Math.random()*4)+0.5)}
+          var set_2 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_2[1] === set_2[0]){set_2[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_2[2] === set_2[0] || set_2[2] === set_2[1]){set_2[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_2[3] === set_2[0] || set_2[3] === set_2[1] || set_2[3] === set_2[2]){set_2[3] = Math.round((Math.random()*4)+0.5)}
+          var set_3 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_3[1] === set_3[0]){set_3[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_3[2] === set_3[0] || set_3[2] === set_3[1]){set_3[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_3[3] === set_3[0] || set_3[3] === set_3[1] || set_3[3] === set_3[2]){set_3[3] = Math.round((Math.random()*4)+0.5)}
+          var set_4 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_4[1] === set_4[0]){set_4[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_4[2] === set_4[0] || set_4[2] === set_4[1]){set_4[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_4[3] === set_4[0] || set_4[3] === set_4[1] || set_4[3] === set_4[2]){set_4[3] = Math.round((Math.random()*4)+0.5)}
+          var set_5 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_5[1] === set_5[0]){set_5[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_5[2] === set_5[0] || set_5[2] === set_5[1]){set_5[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_5[3] === set_5[0] || set_5[3] === set_5[1] || set_5[3] === set_5[2]){set_5[3] = Math.round((Math.random()*4)+0.5)}
+          var set_6 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_6[1] === set_6[0]){set_6[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_6[2] === set_6[0] || set_6[2] === set_6[1]){set_6[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_6[3] === set_6[0] || set_6[3] === set_6[1] || set_6[3] === set_6[2]){set_6[3] = Math.round((Math.random()*4)+0.5)}
+          var set_7 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_7[1] === set_7[0]){set_7[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_7[2] === set_7[0] || set_7[2] === set_7[1]){set_7[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_7[3] === set_7[0] || set_7[3] === set_7[1] || set_7[3] === set_7[2]){set_7[3] = Math.round((Math.random()*4)+0.5)}
+          var set_8 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_8[1] === set_8[0]){set_8[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_8[2] === set_8[0] || set_8[2] === set_8[1]){set_8[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_8[3] === set_8[0] || set_8[3] === set_8[1] || set_8[3] === set_8[2]){set_8[3] = Math.round((Math.random()*4)+0.5)}
+          var set_9 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_9[1] === set_9[0]){set_9[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_9[2] === set_9[0] || set_9[2] === set_9[1]){set_9[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_9[3] === set_9[0] || set_9[3] === set_9[1] || set_9[3] === set_9[2]){set_9[3] = Math.round((Math.random()*4)+0.5)}
+          var set_10 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_10[1] === set_10[0]){set_10[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_10[2] === set_10[0] || set_10[2] === set_10[1]){set_10[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_10[3] === set_10[0] || set_10[3] === set_10[1] || set_10[3] === set_10[2]){set_10[3] = Math.round((Math.random()*4)+0.5)}
+          var set_11 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_11[1] === set_11[0]){set_11[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_11[2] === set_11[0] || set_11[2] === set_11[1]){set_11[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_11[3] === set_11[0] || set_11[3] === set_11[1] || set_11[3] === set_11[2]){set_11[3] = Math.round((Math.random()*4)+0.5)}
+          var set_12 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_12[1] === set_12[0]){set_12[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_12[2] === set_12[0] || set_12[2] === set_12[1]){set_12[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_12[3] === set_12[0] || set_12[3] === set_12[1] || set_12[3] === set_12[2]){set_12[3] = Math.round((Math.random()*4)+0.5)}
+          var set_13 = [Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5), Math.round((Math.random()*4)+0.5)];
+          while(set_13[1] === set_13[0]){set_13[1] = Math.round((Math.random()*4)+0.5)}
+          while(set_13[2] === set_13[0] || set_13[2] === set_13[1]){set_13[2] = Math.round((Math.random()*4)+0.5)}
+          while(set_13[3] === set_13[0] || set_13[3] === set_13[1] || set_13[3] === set_13[2]){set_13[3] = Math.round((Math.random()*4)+0.5)}
+
+          var q_word;
+          var a_def;
+          var words_missed;
+          function move(arr, old_index, new_index) {
+              while (old_index < 0) {
+                  old_index += arr.length;
+              }
+              while (new_index < 0) {
+                  new_index += arr.length;
+              }
+              if (new_index >= arr.length) {
+                  var k = new_index - arr.length;
+                  while ((k--) + 1) {
+                      arr.push(undefined);
+                  }
+              }
+               arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+             return arr;
+          }
+          $('#end_container').hide();
+          $('#title').hide().fadeIn(600);
+          $('#start').hide().fadeIn(600);
+          $('#start').click(function(){
+            load();
+            $(this).hide();
+          })
+          function load(){
+            $('#end_container').hide();
+            var score = 0;
+            var current_question = 1;
+            words_missed = [];
+            var words = [
+                {
+                    word: "Annotate",
+                    definition: "To add notes to (a text or diagram) giving explanation or comment."
+                },
+                {
+                    word: "Cognizant",
+                    definition: "Having knowledge or being aware of."
+                },
+                {
+                    word: "Exploitation",
+                    definition: "The action or fact of treating someone unfairly in order to benefit from their work."
+                },
+                {
+                    word: "Myriad",
+                    definition: "A countless or extremely great number."
+                },
+                {
+                    word: "Inundate",
+                    definition: "Overwhelm (someone) with things or people to be dealt with."
+                },
+                {
+                    word: "Verbatim",
+                    definition: "An exactly the same words as were used originally."
+                },
+                {
+                    word: "Poignant",
+                    definition: "Evoking a keen sense of sadness or regret."
+                },
+                {
+                    word: "Tumultuous",
+                    definition: "Excited, confused, or disorderly."
+                },
+                {
+                    word: "Elusive",
+                    definition: "Difficult to find, catch, or achieve."
+                },
+                {
+                    word: "Vague",
+                    definition: "Of uncertain, indefinite, or unclear character or meaning."
+                },
+                {
+                    word: "Vigilance",
+                    definition: "The action or state of keeping careful watch for possible danger or difficulties."
+                },
+                {
+                    word: "Extrapolate",
+                    definition: "Extend the application of a conclusion to an unknown situation by assuming that existing trends will continue or similar methods will be applicable."
+                },
+                {
+                    word: "Rebuttal",
+                    definition: "A refutation or contradiction."
+                },
+                {
+                    word: "Advocate",
+                    definition: "Publicly recommend or support."
+                }];
+
+            var total_words = words.length;
+            var questions = [];
+            var form_questions = function(){
+              var proto_words = words;
+              var length = proto_words.length;
+              for(var word in proto_words){
+                proto_words = words;
+                var current_word = proto_words[word];
+                var q = current_word.word;
+                var a = current_word.definition;
+                //delete current_word;
+
+                var b = proto_words[Math.round(Math.random()*(length-1))].definition;
+                while(b === a){
+                    var b = proto_words[Math.round(Math.random()*(length-1))].definition;
+                }
+                //delete b;
+                var c = proto_words[Math.round(Math.random()*(length-2))].definition;
+                while(c === a || c === b){
+                    var c = proto_words[Math.round(Math.random()*(length-2))].definition;
+                }
+                //delete c;
+                var d = proto_words[Math.round(Math.random()*(length-3))].definition;
+                while(d === a || d === b || d === c){
+                    var d = proto_words[Math.round(Math.random()*(length-3))].definition;
+                }
+                //delete d;
+
+                questions.push({question: q, answer: a, choice1: b, choice2: c, choice3: d});
+              }
+              //console.log(questions);
+            }
+            form_questions();
+            questions = scramble(questions);
+
+            var display = function(){
+              var q_container = document.createElement('div');
+              q_container.className = "q_container";
+              document.body.appendChild(q_container);
+              var q_div = document.createElement('div');
+              q_div.className = "q_div";
+              var a_div = document.createElement('div');
+              a_div.className = "a_div";
+              a_div.id = "a_div";
+              var b_div = document.createElement('div');
+              b_div.className = "a_div";
+              b_div.id = "b_div";
+              var c_div = document.createElement('div');
+              c_div.className = "a_div";
+              c_div.id = "c_div";
+              var d_div = document.createElement('div');
+              d_div.className = "a_div";
+              d_div.id = "d_div";
+
+              q_container.appendChild(q_div);
+
+              q_container.appendChild(a_div);
+              q_container.appendChild(b_div);
+              q_container.appendChild(c_div);
+              q_container.appendChild(d_div);
+
+
+              $('.q_container').hide().fadeIn(600);
+
+              var count = 0;
+              for(var question in questions){
+                var info = [];
+                var information = questions[question];
+                for(var i = 0; i < (Object.keys(information).length); i++){
+                  info.push(Object.keys(information)[i]);
+                }
+                info = scramble(scramble(scramble(info)));
+                for(var i = 0; i < info.length; i++){
+                  var current_el = info[i];
+                  if(current_el == "question"){
+                    move(info, i, 0);
+                  }
+                }
+                //console.log(info);
+
+                  //console.log(questions[0][info[1]]);
+                  /*var a_index = Math.round((Math.random()*4)+0.5);
+                  var b_index = Math.round((Math.random()*4)+0.5);
+                  while(b_index === a_index){b_index = Math.round((Math.random()*4)+0.5)}
+                  var c_index = Math.round((Math.random()*4)+0.5);
+                  while(c_index === a_index || c_index === b_index){c_index = Math.round((Math.random()*4)+0.5)}
+                  var d_index = Math.round((Math.random()*4)+0.5);
+                  while(d_index === a_index || d_index === b_index || d_index === b_index){d_index = Math.round((Math.random()*4)+0.5)}
+                  */
+
+                  function next_question(number){
+                    $('.q_div').text(questions[number][info[0]]);
+                    if(number === 0){
+                      $('#a_div').text(questions[number][info[set_0[0]]]);
+                      $('#b_div').text(questions[number][info[set_0[1]]]);
+                      $('#c_div').text(questions[number][info[set_0[2]]]);
+                      $('#d_div').text(questions[number][info[set_0[3]]]);
+                    }
+                    if(number === 1){
+                      $('#a_div').text(questions[number][info[set_1[0]]]);
+                      $('#b_div').text(questions[number][info[set_1[1]]]);
+                      $('#c_div').text(questions[number][info[set_1[2]]]);
+                      $('#d_div').text(questions[number][info[set_1[3]]]);
+                    }
+                    if(number === 2){
+                      $('#a_div').text(questions[number][info[set_2[0]]]);
+                      $('#b_div').text(questions[number][info[set_2[1]]]);
+                      $('#c_div').text(questions[number][info[set_2[2]]]);
+                      $('#d_div').text(questions[number][info[set_2[3]]]);
+                    }
+                    if(number === 3){
+                      $('#a_div').text(questions[number][info[set_3[0]]]);
+                      $('#b_div').text(questions[number][info[set_3[1]]]);
+                      $('#c_div').text(questions[number][info[set_3[2]]]);
+                      $('#d_div').text(questions[number][info[set_3[3]]]);
+                    }
+                    if(number === 4){
+                      $('#a_div').text(questions[number][info[set_4[0]]]);
+                      $('#b_div').text(questions[number][info[set_4[1]]]);
+                      $('#c_div').text(questions[number][info[set_4[2]]]);
+                      $('#d_div').text(questions[number][info[set_4[3]]]);
+                    }
+                    if(number === 5){
+                      $('#a_div').text(questions[number][info[set_5[0]]]);
+                      $('#b_div').text(questions[number][info[set_5[1]]]);
+                      $('#c_div').text(questions[number][info[set_5[2]]]);
+                      $('#d_div').text(questions[number][info[set_5[3]]]);
+                    }
+                    if(number === 6){
+                      $('#a_div').text(questions[number][info[set_6[0]]]);
+                      $('#b_div').text(questions[number][info[set_6[1]]]);
+                      $('#c_div').text(questions[number][info[set_6[2]]]);
+                      $('#d_div').text(questions[number][info[set_6[3]]]);
+                    }
+                    if(number === 7){
+                      $('#a_div').text(questions[number][info[set_7[0]]]);
+                      $('#b_div').text(questions[number][info[set_7[1]]]);
+                      $('#c_div').text(questions[number][info[set_7[2]]]);
+                      $('#d_div').text(questions[number][info[set_7[3]]]);
+                    }
+                    if(number === 8){
+                      $('#a_div').text(questions[number][info[set_8[0]]]);
+                      $('#b_div').text(questions[number][info[set_8[1]]]);
+                      $('#c_div').text(questions[number][info[set_8[2]]]);
+                      $('#d_div').text(questions[number][info[set_8[3]]]);
+                    }
+                    if(number === 9){
+                      $('#a_div').text(questions[number][info[set_9[0]]]);
+                      $('#b_div').text(questions[number][info[set_9[1]]]);
+                      $('#c_div').text(questions[number][info[set_9[2]]]);
+                      $('#d_div').text(questions[number][info[set_9[3]]]);
+                    }
+                    if(number === 10){
+                      $('#a_div').text(questions[number][info[set_10[0]]]);
+                      $('#b_div').text(questions[number][info[set_10[1]]]);
+                      $('#c_div').text(questions[number][info[set_10[2]]]);
+                      $('#d_div').text(questions[number][info[set_10[3]]]);
+                    }
+                    if(number === 11){
+                      $('#a_div').text(questions[number][info[set_11[0]]]);
+                      $('#b_div').text(questions[number][info[set_11[1]]]);
+                      $('#c_div').text(questions[number][info[set_11[2]]]);
+                      $('#d_div').text(questions[number][info[set_11[3]]]);
+                    }
+                    if(number === 12){
+                      $('#a_div').text(questions[number][info[set_12[0]]]);
+                      $('#b_div').text(questions[number][info[set_12[1]]]);
+                      $('#c_div').text(questions[number][info[set_12[2]]]);
+                      $('#d_div').text(questions[number][info[set_12[3]]]);
+                    }
+                    if(number === 13){
+                      $('#a_div').text(questions[number][info[set_13[0]]]);
+                      $('#b_div').text(questions[number][info[set_13[1]]]);
+                      $('#c_div').text(questions[number][info[set_13[2]]]);
+                      $('#d_div').text(questions[number][info[set_13[3]]]);
+                    }
+
+                    q_word = questions[number][info[0]];
+                    for(var word in words){
+                      if(words[word].word == q_word){
+                        a_def = words[word].definition;
+                      }
+                    }
+                }
+                next_question(0);
+                window.setInterval(function(){
+                  for(var i = 0; i < total_words; i++){
+                    if(current_question == (i+1)){
+                      /*a_index = Math.round((Math.random()*4)+0.5);
+                      b_index = Math.round((Math.random()*4)+0.5);
+                      c_index = Math.round((Math.random()*4)+0.5);
+                      d_index = Math.round((Math.random()*4)+0.5);*/
+                      next_question(i);
+                    }
+                  }
+                }, 1);
+                //console.log(info);
+                count++;
+              }
+            }
+            display();
+            $('.a_div').click(function(){
+              var submitted_word = q_word;
+              var txt = $(this).text();
+              if(txt === a_def){
+                score++;
+              } else {
+                words_missed.push(submitted_word);
+              }
+              if(current_question === words.length){
+                $('.q_container').fadeOut(300);
+                finish();
+                $('#end_container').delay(300).fadeIn(300);
+              } else {
+                $('.q_container').fadeOut(300).delay(300).fadeIn(300);
+                window.setTimeout(function(){
+                  current_question++;
+                }, 400)
+              }
+            });
+
+            var finish = function(){
+              console.log(score);
+              var percentile = (Math.round(((score/words.length)*10000)))/100;
+              var missed_words = "";
+              for(var word in words_missed){
+                missed_words += words[word].word + "<br>";
+              }
+              if(words_missed.length === 0){
+                missed_words = "None!";
+              }
+              $('#result_container').html("Result: " + percentile + "%" + "<br><br><br>" + "Words Missed: <br>" + "<br>" + missed_words);
+            }
+          }
+        </script>
+    </body>
+</html>
