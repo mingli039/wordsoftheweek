@@ -79,8 +79,10 @@
             font-family: Verdana, Arial;
             font-weight: bold;
             text-align: left;
-            background-color: #FAFAFA;
+            background-color: #E8E8E8;
             padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
           }
           #end_container {
             width: 30%;
@@ -177,6 +179,8 @@
           while(set_13[1] === set_13[0]){set_13[1] = Math.round((Math.random()*4)+0.5)}
           while(set_13[2] === set_13[0] || set_13[2] === set_13[1]){set_13[2] = Math.round((Math.random()*4)+0.5)}
           while(set_13[3] === set_13[0] || set_13[3] === set_13[1] || set_13[3] === set_13[2]){set_13[3] = Math.round((Math.random()*4)+0.5)}
+
+          var cooldown = true;
 
           var q_word;
           var a_def;
@@ -469,22 +473,28 @@
             }
             display();
             $('.a_div').click(function(){
-              var submitted_word = q_word;
-              var txt = $(this).text();
-              if(txt === a_def){
-                score++;
-              } else {
-                words_missed.push(submitted_word);
-              }
-              if(current_question === words.length){
-                $('.q_container').fadeOut(300);
-                finish();
-                $('#end_container').delay(300).fadeIn(300);
-              } else {
-                $('.q_container').fadeOut(300).delay(300).fadeIn(300);
+              if(cooldown){
+                var submitted_word = q_word;
+                var txt = $(this).text();
+                if(txt === a_def){
+                  score++;
+                } else {
+                  words_missed.push(submitted_word);
+                }
+                if(current_question === words.length){
+                  $('.q_container').fadeOut(300);
+                  finish();
+                  $('#end_container').delay(300).fadeIn(300);
+                } else {
+                  $('.q_container').fadeOut(300).delay(300).fadeIn(300);
+                  window.setTimeout(function(){
+                    current_question++;
+                  }, 400)
+                }
+                cooldown = false
                 window.setTimeout(function(){
-                  current_question++;
-                }, 400)
+                  cooldown = true
+                }, 1000)
               }
             });
 
